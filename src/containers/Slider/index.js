@@ -8,7 +8,7 @@ const Slider = () => {
   const { data } = useData();
   const [index, setIndex] = useState(0);
 
-  // Cela évite une erreur si `data` ou `data.focus` est undefined.
+  // Verif existence `data.focus`
   const byDateDesc = data?.focus
     ? [...data.focus].sort((evtA, evtB) =>
         new Date(evtA.date) > new Date(evtB.date) ? -1 : 1
@@ -44,7 +44,7 @@ const Slider = () => {
               </div>
             </div>
           </div>
-          {index === idx && (
+          {index === idx && (  // si index -> à idx 
             <div className="SlideCard__paginationContainer">
               <div className="SlideCard__pagination">
                 {byDateDesc.map((eventslide, radioIdx) => (
