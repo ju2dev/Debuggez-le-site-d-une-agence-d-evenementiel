@@ -8,10 +8,10 @@ const Slider = () => {
   const { data } = useData();
   const [index, setIndex] = useState(0);
 
-  // Verif existence `data.focus`
+  // Verif `data.focus` & trie
   const byDateDesc = data?.focus
     ? [...data.focus].sort((evtA, evtB) =>
-        new Date(evtA.date) > new Date(evtB.date) ? -1 : 1
+        new Date(evtA.date) < new Date(evtB.date) ? -1 : 1 // Changement > vers < car erreur
       )
     : []; // Si `data.focus` est vide ou non défini, on retourne un tableau vide.
 

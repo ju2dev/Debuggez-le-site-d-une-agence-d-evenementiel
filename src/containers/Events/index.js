@@ -13,10 +13,12 @@ const EventList = () => {
   const { data, error } = useData();
   const [type, setType] = useState();
   const [currentPage, setCurrentPage] = useState(1);
+
+// Si la variable Type(valeur) est définie, affiche "type" correspondant, sinon affiche tous les événements
   const filteredEvents = (
     (!type
       ? data?.events
-      : data?.events.filter((event) => event.type === type)) || [] // selection du type 
+      : data?.events.filter((event) => event.type === type)) || [] 
   ).filter((event, index) => {
     if (
       (currentPage - 1) * PER_PAGE <= index &&

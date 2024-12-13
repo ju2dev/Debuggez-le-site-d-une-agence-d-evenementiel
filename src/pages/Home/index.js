@@ -14,7 +14,7 @@ import { useData } from "../../contexts/DataContext";
 
 const Page = () => {
   const {data} = useData()
-  const last = data ? data.events[data.events.length - 1] : null; // extrait & evite valeurs indefini
+  const last = data ? data.events[data.events.length - 1] : null; // verif et recup
 
   return <>
     <header>
@@ -118,13 +118,13 @@ const Page = () => {
     <footer className="row">
       <div className="col presta">
         <h3>Notre derniére prestation</h3>
-        {last && last.cover && last.title ? ( // uniquement si donnée sont là
+        {last && last.cover && last.title ? ( // verif si donnée sont là
         <EventCard
           imageSrc={last?.cover}
           title={last?.title}
           date={new Date(last?.date)}
           small
-          label="boom"
+          label={last?.type} // rajout car oublie de last?.type pour spécifié le type d'évènement
         />
       ) : null}  {/* Ne rien afficher si les données sont manquantes */}
       </div>
